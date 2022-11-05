@@ -47,7 +47,7 @@ def valida_questao(dicio_principal):
                         dicio2['opcoes'] = dicio3
         if chave == 'correta':
             if valor != 'A' and valor != 'B' and valor != 'C' and valor != 'D':
-                dicio2['correta']='valor_errado'
+                dicio2['correta'] = 'valor_errado'
     if dicio_principal != dicio2:
         return dicio2
     else:
