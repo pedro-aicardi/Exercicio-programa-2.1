@@ -1,3 +1,14 @@
+def transforma_base(lista_questoes):
+    dicionario = {}
+    for pergunta in lista_questoes:
+        if pergunta["nivel"] in dicionario:
+            dicionario[pergunta["nivel"]].append(pergunta)
+        else:
+            dicionario[pergunta["nivel"]]=[pergunta]
+    return dicionario
+
+
+    
 def valida_questao(dicio_principal):
     dicio2 = {}
     if 'titulo' not in dicio_principal:
