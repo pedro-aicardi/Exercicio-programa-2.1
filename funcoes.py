@@ -60,3 +60,14 @@ def valida_questoes(lista_questoes):
         valida = valida_questao(dicio)
         lista.append(valida)
     return lista
+
+def questao_para_texto(dicio_questao, num_questao):
+    titulo = dicio_questao['titulo']
+    nivel = dicio_questao['nivel']
+    opcaoA = dicio_questao['opcoes']['A']
+    opcaoB = dicio_questao['opcoes']['B']
+    opcaoC = dicio_questao['opcoes']['C']
+    opcaoD = dicio_questao['opcoes']['D']
+    correta = dicio_questao['correta']
+    string = '-'*40 + f'\nQUESTAO {num_questao}' + '\n\n' + titulo + '\n\n' + 'RESPOSTAS:' + '\nA: ' + opcaoA + '\nB: ' + opcaoB + '\nC: ' + opcaoC + '\nD: ' + opcaoD
+    return string
