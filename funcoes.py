@@ -78,13 +78,11 @@ def sorteia_questao(dicionario_questoes,nivel1):
         for pergunta in dicionario_questoes[nivel]:
             if nivel == 'facil':
                 sorteia = random.choice(list(pergunta))
-                break
-            if nivel == 'medio':
-                sorteia = random.choice(list(pergunta))
-                break
-            if nivel == 'dificil':
-                sorteia = random.choice(list(pergunta))
-                break
+                if nivel == 'medio':
+                    sorteia = random.choice(list(pergunta))
+                    if nivel == 'dificil':
+                        sorteia = random.choice(list(pergunta))
+                        break
     return sorteia
 
 def questao_para_texto(dicio_questao, num_questao):
