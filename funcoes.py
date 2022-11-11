@@ -1,3 +1,4 @@
+import random
 def transforma_base(lista_questoes):
     dicionario = {}
     for pergunta in lista_questoes:
@@ -71,6 +72,20 @@ def valida_questoes(lista_questoes):
         valida = valida_questao(dicio)
         lista.append(valida)
     return lista
+
+def sorteia_questao(dicionario_questoes,nivel1):
+    for nivel in dicionario_questoes:
+        for pergunta in dicionario_questoes[nivel]:
+            if nivel == 'facil':
+                sorteia = random.choice(list(pergunta))
+                break
+            if nivel == 'medio':
+                sorteia = random.choice(list(pergunta))
+                break
+            if nivel == 'dificil':
+                sorteia = random.choice(list(pergunta))
+                break
+    return sorteia
 
 def questao_para_texto(dicio_questao, num_questao):
     titulo = dicio_questao['titulo']
