@@ -1,3 +1,6 @@
+from funcoes import *
+from questoes import *
+
 print('Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!\n')
                                                                                 
 nome = input('Qual seu nome? ')                                                             
@@ -26,3 +29,5 @@ if resposta == "pula":
     pulo -= 1
 if pulo == 0:
     print("ATENÇÃO: Você não tem mais direito de pulos!")
+
+print(funcao_geral(lista_questoes))
