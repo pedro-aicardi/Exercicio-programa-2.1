@@ -107,17 +107,7 @@ def questao_para_texto(dicio_questao, num_questao):
     string = '-'*40 + f'\nQUESTAO {num_questao}' + '\n\n' + titulo + '\n\n' + 'RESPOSTAS:' + '\nA: ' + opcaoA + '\nB: ' + opcaoB + '\nC: ' + opcaoC + '\nD: ' + opcaoD
     return string
 
-ajuda = 2
-pulo = 3
-resposta = input("Qual a sua reposta?! ")
-if resposta == "ajuda":
-    ajuda -= 1
-if ajuda == 0:
-    print("ATENÇÃO: Você não tem mais direito a ajudas!")
-if resposta == "pula":
-    pulo -= 1
-if pulo == 0:
-    print("ATENÇÃO: Você não tem mais direito de pulos!")
+
 
 def gera_ajuda(dicio_questao):
     correta = dicio_questao['correta']
@@ -144,7 +134,7 @@ def gera_ajuda(dicio_questao):
         return f"DICA:\nOpções certamente erradas: {alternativa1} | {alternativa2}"
 
 
-def funcao_geral(lista):
+def funcao_geral(lista_questoes):
     dicio_base_questoes = transforma_base(lista_questoes)
     niveis = ['facil', 'medio', 'dificil']
     lista_sorteada = []
@@ -159,9 +149,14 @@ def funcao_geral(lista):
                 x = False
             if x == True:
                 questao = sorteia_questao_inedita(dicio_base_questoes, nivel, lista_sorteada)
-                for i in range(0, 10):
+                for i in range(1, 10):
                     num_questao = i
                     quest = questao_para_texto(questao, num_questao)
-                return quest
+                    print(quest)
+                    resposta = input('Qual a sua resposta? ')
+                    if resposta != dicio_base_questoes['correta']:
+                        print('Você errou!')
+                    else:
+                        pass
 
 print(funcao_geral(lista_questoes))
