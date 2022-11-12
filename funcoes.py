@@ -108,7 +108,6 @@ def questao_para_texto(dicio_questao, num_questao):
     return string
 
 
-
 def gera_ajuda(dicio_questao):
     correta = dicio_questao['correta']
     opcoes = dicio_questao['opcoes']
