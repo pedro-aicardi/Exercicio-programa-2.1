@@ -137,6 +137,9 @@ def funcao_geral(lista_questoes):
     base_questoes = transforma_base(lista_questoes)
     niveis = ['facil', 'medio', 'dificil']
     lista_sorteada = []
+    ajuda = 2
+    pulo = 3
+    premio = 0
     for nivel in niveis:
         valida_base = base_questoes[nivel]
         lista_validada = (valida_questoes(valida_base))
@@ -152,10 +155,21 @@ def funcao_geral(lista_questoes):
                 quest = questao_para_texto(questao, num_questao)
                 print(quest)
                 resposta = input('\nQual sua resposta? ')
+                alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
                 if resposta == questao['correta']:
-                    print('Você acertou!\n')
+                    print('Você acertou! Seu prêmio atual é de R${premio}\n')
+                elif resposta!= questao['correta'] and resposta not in alternativas:
+                    print('Opção inválida!\nAs opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"! ')
                 else:
-                    print('Você errou!\n')
+                    if resposta == "ajuda":
+                        ajuda -= 1
+                    if ajuda == 0:
+                        print("ATENÇÃO: Você não tem mais direito a ajudas!")
+                    if resposta == "pula":
+                        pulo -= 1
+                    if pulo == 0:
+                        print("ATENÇÃO: Você não tem mais direito de pulos!")
+                    print('Que pena! Você errou e vai sair sem nada :(\n')
                 input('Aperte ENTER para continuar...')
                          
 
