@@ -152,10 +152,6 @@ def funcao_geral(lista_questoes):
                     num_questao = i
                     quest = questao_para_texto(questao, num_questao)
                     print(quest)
-                    resposta = input('Qual a sua resposta? ')
-                    if resposta != dicio_base_questoes['correta']:
-                        print('Você errou!')
-                    else:
-                        pass
+                         
 
 print(funcao_geral(lista_questoes))
