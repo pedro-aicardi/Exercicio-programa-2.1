@@ -1,17 +1,18 @@
 import random
-def sorteia_questao(dicionario_questoes,nivel1):
-    for nivel in dicionario_questoes:
-        for pergunta in dicionario_questoes[nivel]:
-            if nivel == 'facil':
-                sorteia = random.choice(list(pergunta))
-                break
-            if nivel == 'medio':
-                sorteia = random.choice(list(pergunta))
-                break
-            if nivel == 'dificil':
-                sorteia = random.choice(list(pergunta))
-                break
-    return sorteia
+def sorteia_questao(dicionario_questoes,nivel):
+  for nivel1, pergunta in dicionario_questoes.items():
+    if nivel == 'facil':
+        for nivel1, pergunta in dicionario_questoes.items():
+          sorteia = random.choice(dicionario_questoes[nivel1])
+        break
+    if nivel == 'medio':
+        for nivel1, pergunta in dicionario_questoes.items():
+          sorteia = random.choice(dicionario_questoes[nivel1])
+        break
+    if nivel == 'dificil':
+      for nivel1, pergunta in dicionario_questoes.items():
+        sorteia = random.choice(dicionario_questoes[nivel1])
+  return sorteia
 
         
 dicionario = {
@@ -122,6 +123,6 @@ dicionario = {
   ]
 }
 
-nivel1 ='dificil'
+nivel ='medio'
 
-print(sorteia_questao(dicionario, nivel1))
+print(sorteia_questao(dicionario, nivel))
