@@ -163,3 +163,17 @@ questoes_sorteadas = [
 ]
 
 print(sorteia_questao_inedita(dicionario, nivel,questoes_sorteadas))
+
+
+
+lista = [{}, {}, {}]
+for i in range(0, len(lista)):
+  tamanho = len(lista[0])
+  if tamanho == 0:
+    x = True
+  else:
+    x = False
+print(x)
+
+for i in range(0, 10):
+  print(i)

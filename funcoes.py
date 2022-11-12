@@ -1,3 +1,4 @@
+from questoes import *
 import random
 def transforma_base(lista_questoes):
     dicionario = {}
@@ -105,3 +106,23 @@ def questao_para_texto(dicio_questao, num_questao):
     correta = dicio_questao['correta']
     string = '-'*40 + f'\nQUESTAO {num_questao}' + '\n\n' + titulo + '\n\n' + 'RESPOSTAS:' + '\nA: ' + opcaoA + '\nB: ' + opcaoB + '\nC: ' + opcaoC + '\nD: ' + opcaoD
     return string
+
+def funcao_geral(lista):
+    dicio_base_questoes = transforma_base(lista_questoes)
+    niveis = ['facil', 'medio', 'dificil']
+    for nivel in niveis:
+        for lista1 in dicio_base_questoes[nivel]:
+            lista_validada = (valida_questoes(lista1))
+        for i in range(0, len(lista_validada)):
+            tamanho = len(lista_validada[i])
+            if tamanho == 0:
+                x = True
+            else:
+                x = False
+            if x == True:
+                questao = sorteia_questao_inedita(dicio_base_questoes, nivel)
+                for i in range(0, 10):
+                    num_questao = i
+                    quest = questao_para_texto(questao, num_questao)
+                print(quest)
+            
