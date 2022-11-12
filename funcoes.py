@@ -73,18 +73,12 @@ def valida_questoes(lista_questoes):
         lista.append(valida)
     return lista
 
-def sorteia_questao(dicionario_questoes,nivel1):
-    for nivel in dicionario_questoes:
-        for pergunta in dicionario_questoes[nivel]:
-            if nivel == 'facil':
-                sorteia = random.choice(list(pergunta))
-                if nivel == 'medio':
-                    sorteia = random.choice(list(pergunta))
-                    if nivel == 'dificil':
-                        sorteia = random.choice(list(pergunta))
-                        break
-    return sorteia
 
+def sorteia_questao(dicionario_questoes,nivel):
+  questao_sorteada = random.choice(dicionario_questoes[nivel])
+  return questao_sorteada
+
+  
 def questao_para_texto(dicio_questao, num_questao):
     titulo = dicio_questao['titulo']
     nivel = dicio_questao['nivel']
