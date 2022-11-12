@@ -106,6 +106,44 @@ def questao_para_texto(dicio_questao, num_questao):
     correta = dicio_questao['correta']
     string = '-'*40 + f'\nQUESTAO {num_questao}' + '\n\n' + titulo + '\n\n' + 'RESPOSTAS:' + '\nA: ' + opcaoA + '\nB: ' + opcaoB + '\nC: ' + opcaoC + '\nD: ' + opcaoD
     return string
+   
+def funcao_ajuda_pulo():
+    ajuda = 2
+    pulo = 3
+    resposta = input("Qual a sua reposta?! ")
+    if resposta == "ajuda":
+        ajuda -= 1
+    if ajuda == 0:
+        print("ATENÇÃO: Você não tem mais direito a ajudas!")
+    if resposta == "pula":
+        pulo -= 1
+    if pulo == 0:
+        print("ATENÇÃO: Você não tem mais direito de pulos!")
+
+def gera_ajuda(dicio_questao):
+    correta = dicio_questao['correta']
+    opcoes = dicio_questao['opcoes']
+    incorretas1 = ''
+    if correta == 'A':
+        incorretas1 = 'B', 'C', 'D'
+    if correta == 'B':
+        incorretas1 = 'A', 'C', 'D'
+    if correta == 'C':
+        incorretas1 = 'A', 'B', 'D'
+    if correta == 'D':
+        incorretas1 = 'A', 'B', 'C'
+    incorretas = list(incorretas1)
+    num_aleatorio = random.randint(1,2)
+    letra_aleatoria = random.choice(incorretas)
+    incorretas.remove(letra_aleatoria) #removendo caractere ja sorteado para usar na dica dupla
+    letra_aleatoria2 = random.choice(incorretas)
+    alternativa1 = opcoes[letra_aleatoria]
+    alternativa2 = opcoes[letra_aleatoria2]
+    if num_aleatorio == 1:
+        return f"DICA:\nOpções certamente erradas: {alternativa1}"
+    else:
+        return f"DICA:\nOpções certamente erradas: {alternativa1} | {alternativa2}"
+
 
 def funcao_geral(lista):
     dicio_base_questoes = transforma_base(lista_questoes)
@@ -125,4 +163,3 @@ def funcao_geral(lista):
                     num_questao = i
                     quest = questao_para_texto(questao, num_questao)
                 print(quest)
-            
