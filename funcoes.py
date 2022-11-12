@@ -134,24 +134,23 @@ def gera_ajuda(dicio_questao):
 
 
 def funcao_geral(lista_questoes):
-    dicio_base_questoes = transforma_base(lista_questoes)
+    base_questoes = transforma_base(lista_questoes)
     niveis = ['facil', 'medio', 'dificil']
     lista_sorteada = []
     for nivel in niveis:
-        for lista1 in dicio_base_questoes[nivel]:
-            lista_validada = (valida_questoes(lista_questoes))
-        for i in range(0, len(lista_validada)):
-            tamanho = len(lista_validada[i])
-            if tamanho == 0:
-                x = True
-            else:
-                x = False
-            if x == True:
-                questao = sorteia_questao_inedita(dicio_base_questoes, nivel, lista_sorteada)
-                for i in range(1, 10):
-                    num_questao = i
-                    quest = questao_para_texto(questao, num_questao)
-                    print(quest)
+        valida_base = base_questoes[nivel]
+        lista_validada = (valida_questoes(valida_base))
+    for i in range(1, 10):
+        tamanho = len(lista_validada[i])
+        if tamanho == 0:
+            x = True
+        else:
+            x = False
+        if x == True:
+            questao = sorteia_questao_inedita(base_questoes, nivel, lista_sorteada)
+            num_questao = i
+            quest = questao_para_texto(questao, num_questao)
+            print(quest)
                          
 
 print(funcao_geral(lista_questoes))
