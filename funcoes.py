@@ -140,17 +140,23 @@ def funcao_geral(lista_questoes):
     for nivel in niveis:
         valida_base = base_questoes[nivel]
         lista_validada = (valida_questoes(valida_base))
-    for i in range(1, 10):
-        tamanho = len(lista_validada[i])
-        if tamanho == 0:
-            x = True
-        else:
-            x = False
-        if x == True:
-            questao = sorteia_questao_inedita(base_questoes, nivel, lista_sorteada)
-            num_questao = i
-            quest = questao_para_texto(questao, num_questao)
-            print(quest)
+        for i in range(1, 10):
+            tamanho = len(lista_validada[i])
+            if tamanho == 0:
+                x = True
+            else:
+                x = False
+            if x == True:
+                questao = sorteia_questao_inedita(base_questoes, nivel, lista_sorteada)
+                num_questao = i
+                quest = questao_para_texto(questao, num_questao)
+                print(quest)
+                resposta = input('\nQual sua resposta? ')
+                if resposta == questao['correta']:
+                    print('Você acertou!\n')
+                else:
+                    print('Você errou!\n')
+                input('Aperte ENTER para continuar...')
                          
 
 print(funcao_geral(lista_questoes))

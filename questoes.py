@@ -105,7 +105,7 @@ lista_questoes = [
     'titulo': 'Quantos vertices tem um triângulo?',
     'nivel': 'facil',
     'opcoes': {'A': '1', 'B': '2', 'C': '3', 'D': '4'},
-    'correta': 'B'
+    'correta': 'C'
   },
   {#19
     'titulo': 'Qual o filme com maior bilheteria na história?',
