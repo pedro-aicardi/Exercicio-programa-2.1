@@ -1,8 +1,7 @@
 import random
 def sorteia_questao(dicionario_questoes,nivel):
-  questao_sorteada = random.choice(dicionario_questoes[nivel])
-  return questao_sorteada
-
+    questao_sorteada = random.choice(dicionario_questoes[nivel])
+    return questao_sorteada
 
 def sorteia_questao_inedita(dicio_questoes, nivel, lista_sorteada):
     inedita = True
@@ -11,6 +10,7 @@ def sorteia_questao_inedita(dicio_questoes, nivel, lista_sorteada):
         if questao_inedita not in lista_sorteada:
             inedita = False
         else:
+            lista_sorteada.append(questao_inedita)
             inedita = True
     return questao_inedita
 
@@ -125,4 +125,41 @@ dicionario = {
 
 nivel ='medio'
 
-print(sorteia_questao(dicionario, nivel))
+
+questoes_sorteadas = [
+  {
+    "titulo": "Qual destes parques não se localiza em São Paulo?!",
+    "nivel": "facil",
+    "opcoes": {
+      "A": "Ibirapuera",
+      "B": "Parque do Carmo",
+      "C": "Parque Villa Lobos",
+      "D": "Morro da Urca"
+    },
+    "correta": "D"
+  },
+  {
+    "titulo": "Qual o resultado da operação 57 + 32?",
+    "nivel": "facil",
+    "opcoes": {
+      "A": "-19",
+      "B": "85",
+      "C": "89",
+      "D": "99"
+    },
+    "correta": "C"
+  },
+  {
+    "titulo": "Qual destes números é primo?",
+    "nivel": "medio",
+    "opcoes": {
+      "A": "259",
+      "B": "85",
+      "C": "49",
+      "D": "19"
+    },
+    "correta": "D"
+  }
+]
+
+print(sorteia_questao_inedita(dicionario, nivel,questoes_sorteadas))
