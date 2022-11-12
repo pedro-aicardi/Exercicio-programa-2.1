@@ -78,7 +78,23 @@ def sorteia_questao(dicionario_questoes,nivel):
   questao_sorteada = random.choice(dicionario_questoes[nivel])
   return questao_sorteada
 
-  
+
+def sorteia_questao(dicionario_questoes,nivel):
+    questao_sorteada = random.choice(dicionario_questoes[nivel])
+    return questao_sorteada
+
+def sorteia_questao_inedita(dicio_questoes, nivel, lista_sorteada):
+  inedita = True
+  while inedita == True:
+    questao_inedita = sorteia_questao(dicio_questoes,nivel)
+    if questao_inedita not in lista_sorteada:
+      lista_sorteada.append(questao_inedita)
+      inedita = False
+    else:
+      inedita = True
+  return questao_inedita
+
+
 def questao_para_texto(dicio_questao, num_questao):
     titulo = dicio_questao['titulo']
     nivel = dicio_questao['nivel']
