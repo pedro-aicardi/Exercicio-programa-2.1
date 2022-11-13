@@ -139,6 +139,8 @@ def funcao_geral(lista_questoes):
     ajuda = 2
     pulo = 3
     premio = 0
+    lista_premio = [1000,5000,10000,30000,50000,100000,300000,500000,1000000]
+    lista_index = 0
     for nivel in niveis:
         valida_base = base_questoes[nivel]
         lista_validada = (valida_questoes(valida_base))
@@ -156,7 +158,10 @@ def funcao_geral(lista_questoes):
                 resposta = input('\nQual sua resposta? ')
                 alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
                 if resposta == questao["correta"]:
-                    premio = 1000
+                    premio = lista_premio[lista_index]
+                    lista_index += 1
+                    if lista_index == 9:
+                        print("Parabéns! você ganhou o prêmio máximo de 1.000.000 R$")
                 if resposta == questao['correta']:
                     print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
                 elif resposta!= questao['correta'] and resposta not in alternativas:
