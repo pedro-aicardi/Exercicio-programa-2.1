@@ -139,6 +139,8 @@ def funcao_geral(lista_questoes):
     ajuda = 2
     pulo = 3
     premio = 0
+    lista_premio = [1000,5000,10000,30000,50000,100000,300000,500000,1000000]
+    lista_index = 0
     for nivel in niveis:
         valida_base = base_questoes[nivel]
         lista_validada = (valida_questoes(valida_base))
@@ -155,6 +157,11 @@ def funcao_geral(lista_questoes):
                 print(quest)
                 resposta = input('\nQual sua resposta? ')
                 alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
+                if resposta == questao["correta"]:
+                    premio = lista_premio[lista_index]
+                    lista_index += 1
+                    if lista_index == 9:
+                        print("Parabéns! você ganhou o prêmio máximo de 1.000.000 R$")
                 if resposta == questao['correta']:
                     print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
                 elif resposta!= questao['correta'] and resposta not in alternativas:
@@ -176,12 +183,12 @@ def funcao_geral(lista_questoes):
                         if resposta == 'ajuda':
                             print('Não deu! Você já pediu ajuda nesta questão!\n')
                             input('Aperte ENTER para continuar...')
-                        if ajuda ==  0:
-                            print('Não deu! Você não tem mais direito a ajuda!')
-                        if ajuda == 1:
-                            ajuda -= 1
-                            print("ATENÇÃO: Você não tem mais direito a ajudas!")
-                    if resposta == "pula":
+                    if ajuda ==  0:
+                        print('Não deu! Você não tem mais direito a ajuda!')
+                    if ajuda == 1:
+                        ajuda -= 1
+                        print("ATENÇÃO: Você não tem mais direito a ajudas!")
+                    elif resposta == "pula":
                         pulo -= 1
                         print(f'Ok, pulando! Você ainda tem {pulo} pulos!\n ')
                         input('Aperte ENTER para continuar...')
