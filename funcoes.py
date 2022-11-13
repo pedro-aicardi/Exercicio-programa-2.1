@@ -143,7 +143,7 @@ def funcao_geral(lista_questoes):
     for nivel in niveis:
         valida_base = base_questoes[nivel]
         lista_validada = (valida_questoes(valida_base))
-        for i in range(1, 10):
+        for i in range(1, 4):
             tamanho = len(lista_validada[i])
             if tamanho == 0:
                 x = True
@@ -157,9 +157,14 @@ def funcao_geral(lista_questoes):
                 resposta = input('\nQual sua resposta? ')
                 alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
                 if resposta == questao['correta']:
-                    print('Você acertou! Seu prêmio atual é de R${premio}\n')
+                    print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
                 elif resposta!= questao['correta'] and resposta not in alternativas:
-                    print('Opção inválida!\nAs opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"! ')
+                    y =False
+                    while y == False:
+                        print('Opção inválida!\nAs opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"! ')
+                        resposta = input('\nQual sua resposta? ')
+                        if resposta in alternativas:
+                            y = True
                 else:
                     if resposta == "ajuda":
                         ajuda -= 1
@@ -171,6 +176,77 @@ def funcao_geral(lista_questoes):
                         print("ATENÇÃO: Você não tem mais direito de pulos!")
                     print('Que pena! Você errou e vai sair sem nada :(\n')
                 input('Aperte ENTER para continuar...')
+        for i in range(4, 7):
+            tamanho = len(lista_validada[i])
+            if tamanho == 0:
+                x = True
+            else:
+                x = False
+            if x == True:
+                questao = sorteia_questao_inedita(base_questoes, nivel, lista_sorteada)
+                num_questao = i
+                quest = questao_para_texto(questao, num_questao)
+                print('\nHEY! Você passou para o nível MEDIO!')
+                input('Aperte ENTER para continuar...')
+                print('\n' + quest)
+                resposta = input('\nQual sua resposta? ')
+                alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
+                if resposta == questao['correta']:
+                    print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
+                elif resposta!= questao['correta'] and resposta not in alternativas:
+                    y =False
+                    while y == False:
+                        print('Opção inválida!\nAs opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"! ')
+                        resposta = input('\nQual sua resposta? ')
+                        if resposta in alternativas:
+                            y = True
+                else:
+                    if resposta == "ajuda":
+                        ajuda -= 1
+                    if ajuda == 0:
+                        print("ATENÇÃO: Você não tem mais direito a ajudas!")
+                    if resposta == "pula":
+                        pulo -= 1
+                    if pulo == 0:
+                        print("ATENÇÃO: Você não tem mais direito de pulos!")
+                    print('Que pena! Você errou e vai sair sem nada :(\n')
+                input('Aperte ENTER para continuar...')
+        for i in range(7, 10):
+            tamanho = len(lista_validada[i])
+            if tamanho == 0:
+                x = True
+            else:
+                x = False
+            if x == True:
+                questao = sorteia_questao_inedita(base_questoes, nivel, lista_sorteada)
+                num_questao = i
+                quest = questao_para_texto(questao, num_questao)
+                print('\nHEY! Você passou para o nível MEDIO!')
+                input('Aperte ENTER para continuar...')
+                print('\n' + quest)
+                resposta = input('\nQual sua resposta? ')
+                alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
+                if resposta == questao['correta']:
+                    print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
+                elif resposta!= questao['correta'] and resposta not in alternativas:
+                    y =False
+                    while y == False:
+                        print('Opção inválida!\nAs opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"! ')
+                        resposta = input('\nQual sua resposta? ')
+                        if resposta in alternativas:
+                            y = True
+                else:
+                    if resposta == "ajuda":
+                        ajuda -= 1
+                    if ajuda == 0:
+                        print("ATENÇÃO: Você não tem mais direito a ajudas!")
+                    if resposta == "pula":
+                        pulo -= 1
+                    if pulo == 0:
+                        print("ATENÇÃO: Você não tem mais direito de pulos!")
+                    print('Que pena! Você errou e vai sair sem nada :(\n')
+                input('Aperte ENTER para continuar...')
+
                          
 
 print(funcao_geral(lista_questoes))
