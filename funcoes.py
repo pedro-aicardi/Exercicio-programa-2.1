@@ -155,6 +155,8 @@ def funcao_geral(lista_questoes):
                 print(quest)
                 resposta = input('\nQual sua resposta? ')
                 alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
+                if resposta == questao["correta"]:
+                    premio = 1000
                 if resposta == questao['correta']:
                     print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
                 elif resposta!= questao['correta'] and resposta not in alternativas:
