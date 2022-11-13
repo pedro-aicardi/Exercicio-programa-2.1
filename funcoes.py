@@ -176,12 +176,12 @@ def funcao_geral(lista_questoes):
                         if resposta == 'ajuda':
                             print('Não deu! Você já pediu ajuda nesta questão!\n')
                             input('Aperte ENTER para continuar...')
-                    if ajuda ==  0:
-                        print('Não deu! Você não tem mais direito a ajuda!')
-                    if ajuda == 1:
-                        ajuda -= 1
-                        print("ATENÇÃO: Você não tem mais direito a ajudas!")
-                    elif resposta == "pula":
+                        if ajuda ==  0:
+                            print('Não deu! Você não tem mais direito a ajuda!')
+                        if ajuda == 1:
+                            ajuda -= 1
+                            print("ATENÇÃO: Você não tem mais direito a ajudas!")
+                    if resposta == "pula":
                         pulo -= 1
                         print(f'Ok, pulando! Você ainda tem {pulo} pulos!\n ')
                         input('Aperte ENTER para continuar...')
@@ -192,7 +192,12 @@ def funcao_geral(lista_questoes):
                     print('Que pena! Você errou e vai sair sem nada :(\n')
                 input('Aperte ENTER para continuar...')
                 if resposta == questao['correta']:
-                    premio = 1000
+                    premio = 1000   
+                else:
+                    print('Que pena! Você errou e vai sair sem nada :(\n')
+                    jogar = input('\nDeseja tentar a sorte outra vez [S/N]?')
+                    if jogar == 'S':
+                        continue
 
-                         
-
+                
+print(funcao_geral(lista_questoes))
