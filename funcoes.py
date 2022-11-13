@@ -191,8 +191,6 @@ def funcao_geral(lista_questoes):
                             print("ATENÇÃO: Você não tem mais direito de pulos!")
                     print('Que pena! Você errou e vai sair sem nada :(\n')
                 input('Aperte ENTER para continuar...')
-                if resposta == questao['correta']:
-                    premio = 1000
 
                          
 
