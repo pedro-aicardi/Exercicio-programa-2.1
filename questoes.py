@@ -342,5 +342,3 @@ lista_questoes = [
   'correta': 'D'
   }
 ]
-
-print(lista_questoes)
