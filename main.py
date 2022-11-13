@@ -16,18 +16,4 @@ print('\nVamos começar com questões do nível FACIL!')
 input('Aperte ENTER para continuar...')
 
 
-print('\n\n' + '-'*40)
-
-ajuda = 2
-pulo = 3
-resposta = input("Qual a sua reposta?! ")
-if resposta == "ajuda":
-    ajuda -= 1
-if ajuda == 0:
-    print("ATENÇÃO: Você não tem mais direito a ajudas!")
-if resposta == "pula":
-    pulo -= 1
-if pulo == 0:
-    print("ATENÇÃO: Você não tem mais direito de pulos!")
-    
 print(funcao_geral(lista_questoes))
