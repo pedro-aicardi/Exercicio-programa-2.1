@@ -196,4 +196,3 @@ def funcao_geral(lista_questoes):
 
                          
 
-print(funcao_geral(lista_questoes))
