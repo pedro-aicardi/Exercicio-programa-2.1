@@ -166,17 +166,22 @@ def funcao_geral(lista_questoes):
                         if resposta in alternativas:
                             y = True
                 else:
-                    if resposta == "ajuda":
+                    while resposta == "ajuda":
                         ajuda -= 1
                         print(f'Ok, lá vem ajuda! Você ainda tem {ajuda} ajudas!\n')
                         input('Aperte ENTER para continuar...')
                         print(gera_ajuda(questao))
                         input('Aperte ENTER para continuar...')
                         print(quest)
-                        if ajuda == 0:
-                            print('Não deu! Você não tem mais direito a ajuda!')
-                        if ajuda == 1:
-                            print("ATENÇÃO: Você não tem mais direito a ajudas!")
+                        resposta = input('\nQual sua resposta? ')
+                        if resposta == 'ajuda':
+                            print('Não deu! Você já pediu ajuda nesta questão!\n')
+                            input('Aperte ENTER para continuar...')
+                    if ajuda ==  0:
+                        print('Não deu! Você não tem mais direito a ajuda!')
+                    if ajuda == 1:
+                        ajuda -= 1
+                        print("ATENÇÃO: Você não tem mais direito a ajudas!")
                     elif resposta == "pula":
                         pulo -= 1
                         print(f'Ok, pulando! Você ainda tem {pulo} pulos!\n ')
