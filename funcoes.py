@@ -1,5 +1,6 @@
 from questoes import *
 import random
+from termcolor import colored, cprint
 def transforma_base(lista_questoes):
     dicionario = {}
     for pergunta in lista_questoes:
@@ -201,10 +202,13 @@ def funcao_geral(lista_questoes):
                 if resposta == questao['correta']:
                     premio = 1000   
                 else:
-                    print('Que pena! Você errou e vai sair sem nada :(\n')
+                    cprint('Que pena! Você errou e vai sair sem nada :(\n')
                     jogar = input('\nDeseja tentar a sorte outra vez [S/N]?')
                     if jogar == 'S':
+                        print("Bom jogo")
                         continue
+                    else:
+                        print("Obrigado por ter jogado!")
 
                 
 print(funcao_geral(lista_questoes))
