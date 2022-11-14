@@ -15,6 +15,6 @@ print('\nVamos começar com questões do nível FACIL!')
                                                                                 
 input('Aperte ENTER para continuar...')
 
-funcao_geral(lista_questoes)
+print(funcao_geral(lista_questoes))
 
 
