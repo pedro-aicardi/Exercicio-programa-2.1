@@ -163,8 +163,8 @@ def funcao_geral(lista_questoes):
                     lista_index += 1
                     if lista_index == 9:
                         print("Parabéns! você ganhou o prêmio máximo de 1.000.000 R$")
-                if resposta == questao['correta']:
-                    print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
+                    else:
+                        print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
                 elif resposta!= questao['correta'] and resposta not in alternativas:
                     y =False
                     while y == False:
