@@ -180,7 +180,8 @@ def funcao_geral(lista_questoes):
                     break
                 elif resposta == "parar":
                     print(f'Seu prêmio final é de R${premio}\n')
-                    return
+                    fimdejogo=True
+                    break
                 elif resposta == "pular":
                     if pulo==0:
                         print("Você não tem mais direito a pulos")
