@@ -214,4 +214,3 @@ def funcao_geral(lista_questoes):
             print("Obrigado por ter jogado!")
             fimdejogo=True
                 
-funcao_geral(lista_questoes)
