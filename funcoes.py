@@ -1,6 +1,5 @@
 from questoes import *
 import random
-from termcolor import colored, cprint
 def transforma_base(lista_questoes):
     dicionario = {}
     for pergunta in lista_questoes:
@@ -105,7 +104,7 @@ def questao_para_texto(dicio_questao, num_questao):
     opcaoC = dicio_questao['opcoes']['C']
     opcaoD = dicio_questao['opcoes']['D']
     correta = dicio_questao['correta']
-    string = '-'*40 + f'\nQUESTAO {num_questao}' + '\n\n' + titulo + '\n\n' + 'RESPOSTAS:' + '\nA: ' + opcaoA + '\nB: ' + opcaoB + '\nC: ' + opcaoC + '\nD: ' + opcaoD
+    string = '-'*40 + f'\n\033[34mQUESTAO {num_questao}' + '\033[m\n\n' + titulo + '\n\n' + 'RESPOSTAS:' + '\nA: ' + opcaoA + '\nB: ' + opcaoB + '\nC: ' + opcaoC + '\nD: ' + opcaoD
     return string
 
 def gera_ajuda(dicio_questao):
@@ -128,9 +127,9 @@ def gera_ajuda(dicio_questao):
     alternativa1 = opcoes[letra_aleatoria]
     alternativa2 = opcoes[letra_aleatoria2]
     if num_aleatorio == 1:
-        return f"DICA:\nOpções certamente erradas: {alternativa1}"
+        return f"\033[32mDICA:\nOpções certamente erradas: {alternativa1}\033[m"
     else:
-        return f"DICA:\nOpções certamente erradas: {alternativa1} | {alternativa2}"
+        return f"\033[32mDICA:\nOpções certamente erradas: {alternativa1} | {alternativa2}\033[m"
 
 
 def funcao_geral(lista_questoes):
@@ -145,7 +144,7 @@ def funcao_geral(lista_questoes):
     for nivel in niveis:
         valida_base = base_questoes[nivel]
         lista_validada = (valida_questoes(valida_base))
-        for i in range(1, 4):
+        for i in range(1, 10):
             tamanho = len(lista_validada[i])
             if tamanho == 0:
                 x = True
@@ -157,14 +156,23 @@ def funcao_geral(lista_questoes):
                 quest = questao_para_texto(questao, num_questao)
                 print(quest)
                 resposta = input('\nQual sua resposta? ')
+                opcoes = ['A', 'B', 'C', 'D']
                 alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
                 if resposta == questao["correta"]:
                     premio = lista_premio[lista_index]
                     lista_index += 1
                     if lista_index == 9:
-                        print("Parabéns! você ganhou o prêmio máximo de 1.000.000 R$")
+                        print("\033[32mParabéns! você ganhou o prêmio máximo de 1.000.000 R$\033[m")
                     else:
-                        print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
+                        print(f'\033[32mVocê acertou! Seu prêmio atual é de R${premio}\033[m\n')
+                        if i == 3:
+                            print('HEY! Você passou para o nível MEDIO!')
+                            input('Aperte ENTER para continuar...')
+                            break
+                        if i == 6:
+                            print('HEY! Você passou para o nível DIFICIL!')
+                            input('Aperte ENTER para continuar...')
+                            break
                 elif resposta!= questao['correta'] and resposta not in alternativas:
                     y =False
                     while y == False:
@@ -182,10 +190,10 @@ def funcao_geral(lista_questoes):
                         print(quest)
                         resposta = input('\nQual sua resposta? ')
                         if resposta == 'ajuda':
-                            print('Não deu! Você já pediu ajuda nesta questão!\n')
+                            print('\033[31mNão deu! Você já pediu ajuda nesta questão!\033[m\n')
                             input('Aperte ENTER para continuar...')
                     if ajuda ==  0:
-                        print('Não deu! Você não tem mais direito a ajuda!')
+                        print('\033[31mNão deu! Você não tem mais direito a ajuda!\033[m')
                     if ajuda == 1:
                         ajuda -= 1
                         print("ATENÇÃO: Você não tem mais direito a ajudas!")
@@ -197,18 +205,13 @@ def funcao_geral(lista_questoes):
                         print(quest)
                         if pulo == 0:
                             print("ATENÇÃO: Você não tem mais direito de pulos!")
-                    print('Que pena! Você errou e vai sair sem nada :(\n')
-                input('Aperte ENTER para continuar...')
-                if resposta == questao['correta']:
-                    premio = 1000   
-                else:
-                    cprint('Que pena! Você errou e vai sair sem nada :(\n')
-                    jogar = input('\nDeseja tentar a sorte outra vez [S/N]?')
-                    if jogar == 'S':
-                        print("Bom jogo")
-                        continue
+            if resposta in opcoes and resposta != questao['correta']:                
+                print('Que pena! Você errou e vai sair sem nada :(\n')
+                resposta1 = input('Aperte ENTER para continuar...')
+                if resposta1 == '':
+                    resposta2 = input('\nDeseja tentar a sorte outra vez [S/N]? ')
+                    if resposta2 == 'S':
+                        print(funcao_geral(lista_questoes))
                     else:
                         print("Obrigado por ter jogado!")
-
-                
-print(funcao_geral(lista_questoes))
+                break
