@@ -174,7 +174,7 @@ def funcao_geral(lista_questoes):
                     if lista_index == 9:
                         print("\033[32mParabéns! você ganhou o prêmio máximo de 1.000.000 R$\033[m")
                     else:
-                        print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
+                        print(f'\033[32mVocê acertou! Seu prêmio atual é de R${premio}\033[m\n')
                     break
                 elif resposta == "pula":
                     break
