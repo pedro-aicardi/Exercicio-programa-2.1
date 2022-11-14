@@ -9,8 +9,6 @@ def transforma_base(lista_questoes):
         else:
             dicionario[pergunta["nivel"]]=[pergunta]
     return dicionario
-
-
     
 def valida_questao(dicio_principal):
     dicio2 = {}
@@ -140,24 +138,36 @@ def funcao_geral(lista_questoes):
     ajuda = 2
     pulo = 3
     premio = 0
+    erro = False
+    alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
     lista_premio = [1000,5000,10000,30000,50000,100000,300000,500000,1000000]
+    lista_dificuldade = ["facil", "facil","facil","medio","medio","medio","dificil","dificil","dificil"]
     lista_index = 0
-    for nivel in niveis:
+    fimdejogo = False
+
+    for i in range(0, len(niveis)):
+        nivel=niveis[i]
         valida_base = base_questoes[nivel]
         lista_validada = (valida_questoes(valida_base))
-        for i in range(1, 4):
-            tamanho = len(lista_validada[i])
-            if tamanho == 0:
-                x = True
-            else:
-                x = False
-            if x == True:
-                questao = sorteia_questao_inedita(base_questoes, nivel, lista_sorteada)
-                num_questao = i
-                quest = questao_para_texto(questao, num_questao)
+        tamanho = len(lista_validada[i])
+        if tamanho != 0:
+            erro = True
+            break
+
+    if erro:
+        print("Erro de validação\n")
+        return
+
+    while (fimdejogo == False):
+
+        while (lista_index<9 and fimdejogo==False):
+            nivel=lista_dificuldade[lista_index]
+            questao = sorteia_questao_inedita(base_questoes, nivel, lista_sorteada)
+            quest = questao_para_texto(questao, lista_index + 1)
+
+            while True:
                 print(quest)
                 resposta = input('\nQual sua resposta? ')
-                alternativas = ['A', 'B', 'C', 'D', 'ajuda', 'pula' 'parar']
                 if resposta == questao["correta"]:
                     premio = lista_premio[lista_index]
                     lista_index += 1
@@ -165,50 +175,42 @@ def funcao_geral(lista_questoes):
                         print("Parabéns! você ganhou o prêmio máximo de 1.000.000 R$")
                     else:
                         print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
-                elif resposta!= questao['correta'] and resposta not in alternativas:
-                    y =False
-                    while y == False:
-                        print('Opção inválida!\nAs opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"! ')
-                        resposta = input('\nQual sua resposta? ')
-                        if resposta in alternativas:
-                            y = True
-                else:
-                    while resposta == "ajuda":
+                    break
+                elif resposta == "pula":
+                    break
+                elif resposta == "parar":
+                    print(f'Seu prêmio final é de R${premio}\n')
+                    return
+                elif resposta == "pular":
+                    if pulo==0:
+                        print("Você não tem mais direito a pulos")
+                    else:
+                        pulo -= 1
+                        questao = sorteia_questao_inedita(base_questoes, nivel, lista_sorteada)
+                        quest = questao_para_texto(questao, lista_index + 1)
+                elif resposta == "ajuda":
+                    if ajuda ==  0:
+                        print('Não deu! Você não tem mais direito a ajuda!')
+                    else:
                         ajuda -= 1
                         print(f'Ok, lá vem ajuda! Você ainda tem {ajuda} ajudas!\n')
                         input('Aperte ENTER para continuar...')
                         print(gera_ajuda(questao))
                         input('Aperte ENTER para continuar...')
-                        print(quest)
-                        resposta = input('\nQual sua resposta? ')
-                        if resposta == 'ajuda':
-                            print('Não deu! Você já pediu ajuda nesta questão!\n')
-                            input('Aperte ENTER para continuar...')
-                    if ajuda ==  0:
-                        print('Não deu! Você não tem mais direito a ajuda!')
-                    if ajuda == 1:
-                        ajuda -= 1
-                        print("ATENÇÃO: Você não tem mais direito a ajudas!")
-                    elif resposta == "pula":
-                        pulo -= 1
-                        print(f'Ok, pulando! Você ainda tem {pulo} pulos!\n ')
-                        input('Aperte ENTER para continuar...')
-                        quest = questao_para_texto(questao, num_questao)
-                        print(quest)
-                        if pulo == 0:
-                            print("ATENÇÃO: Você não tem mais direito de pulos!")
-                    print('Que pena! Você errou e vai sair sem nada :(\n')
-                input('Aperte ENTER para continuar...')
-                if resposta == questao['correta']:
-                    premio = 1000   
+                elif resposta not in alternativas:
+                    print('Opção inválida!\nAs opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"! ')
                 else:
-                    cprint('Que pena! Você errou e vai sair sem nada :(\n')
-                    jogar = input('\nDeseja tentar a sorte outra vez [S/N]?')
-                    if jogar == 'S':
-                        print("Bom jogo")
-                        continue
-                    else:
-                        print("Obrigado por ter jogado!")
+                    print('Que pena! Você errou e vai sair sem nada :(\n')
+                    fimdejogo = True
+                    break
 
+        jogar = input('\nDeseja tentar a sorte outra vez [S/N]?')
+        if jogar == 'S':
+            print("Bom jogo")
+            lista_index=0
+            fimdejogo=False
+        else:
+            print("Obrigado por ter jogado!")
+            fimdejogo=True
                 
-print(funcao_geral(lista_questoes))
+funcao_geral(lista_questoes)
