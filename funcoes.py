@@ -105,6 +105,7 @@ def questao_para_texto(dicio_questao, num_questao):
     string = '-'*40 + f'\n\033[34mQUESTAO {num_questao}' + '\033[m\n\n' + titulo + '\n\n' + 'RESPOSTAS:' + '\nA: ' + opcaoA + '\nB: ' + opcaoB + '\nC: ' + opcaoC + '\nD: ' + opcaoD
     return string
 
+
 def gera_ajuda(dicio_questao):
     correta = dicio_questao['correta']
     opcoes = dicio_questao['opcoes']
