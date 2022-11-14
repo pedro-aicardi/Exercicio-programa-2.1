@@ -171,7 +171,6 @@ def funcao_geral(lista_questoes):
                 if resposta == questao["correta"]:
                     premio = lista_premio[lista_index]
                     lista_index += 1
-                    id += 1
                     if lista_index == 9:
                         print("\033[32mParabéns! você ganhou o prêmio máximo de 1.000.000 R$\033[m")
                     else:
