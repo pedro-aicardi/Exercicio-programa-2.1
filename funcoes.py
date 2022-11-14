@@ -141,6 +141,7 @@ def funcao_geral(lista_questoes):
     premio = 0
     lista_premio = [1000,5000,10000,30000,50000,100000,300000,500000,1000000]
     lista_index = 0
+    id = 1
     for nivel in niveis:
         valida_base = base_questoes[nivel]
         lista_validada = (valida_questoes(valida_base))
@@ -152,7 +153,7 @@ def funcao_geral(lista_questoes):
                 x = False
             if x == True:
                 questao = sorteia_questao_inedita(base_questoes, nivel, lista_sorteada)
-                num_questao = i
+                num_questao = id
                 quest = questao_para_texto(questao, num_questao)
                 print(quest)
                 resposta = input('\nQual sua resposta? ')
@@ -161,6 +162,7 @@ def funcao_geral(lista_questoes):
                 if resposta == questao["correta"]:
                     premio = lista_premio[lista_index]
                     lista_index += 1
+                    id += 1
                     if lista_index == 9:
                         print("\033[32mParabéns! você ganhou o prêmio máximo de 1.000.000 R$\033[m")
                     else:
@@ -192,12 +194,12 @@ def funcao_geral(lista_questoes):
                         if resposta == 'ajuda':
                             print('\033[31mNão deu! Você já pediu ajuda nesta questão!\033[m\n')
                             input('Aperte ENTER para continuar...')
-                    if ajuda ==  0:
-                        print('\033[31mNão deu! Você não tem mais direito a ajuda!\033[m')
-                    if ajuda == 1:
-                        ajuda -= 1
-                        print("ATENÇÃO: Você não tem mais direito a ajudas!")
-                    elif resposta == "pula":
+                        if ajuda ==  0:
+                            print('\033[31mNão deu! Você não tem mais direito a ajuda!\033[m')
+                        if ajuda == 1:
+                            ajuda -= 1
+                            print("ATENÇÃO: Você não tem mais direito a ajudas!")
+                    if resposta == "pula":
                         pulo -= 1
                         print(f'Ok, pulando! Você ainda tem {pulo} pulos!\n ')
                         input('Aperte ENTER para continuar...')

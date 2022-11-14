@@ -304,7 +304,7 @@ lista_questoes = [
   'titulo': 'Em que ano faleceu Charles Babbage?',
   'nivel': 'dificil',
   'opcoes': {'A': '2022', 'B': '1791', 'C': '1935', 'D': '1871'},
-  'correta': 'A'
+  'correta': 'D'
   },
 
   {#48
