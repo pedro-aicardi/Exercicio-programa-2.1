@@ -1,6 +1,5 @@
 from questoes import *
 import random
-from termcolor import colored, cprint
 def transforma_base(lista_questoes):
     dicionario = {}
     for pergunta in lista_questoes:
@@ -103,7 +102,7 @@ def questao_para_texto(dicio_questao, num_questao):
     opcaoC = dicio_questao['opcoes']['C']
     opcaoD = dicio_questao['opcoes']['D']
     correta = dicio_questao['correta']
-    string = '-'*40 + f'\nQUESTAO {num_questao}' + '\n\n' + titulo + '\n\n' + 'RESPOSTAS:' + '\nA: ' + opcaoA + '\nB: ' + opcaoB + '\nC: ' + opcaoC + '\nD: ' + opcaoD
+    string = '-'*40 + f'\n\033[34mQUESTAO {num_questao}' + '\033[m\n\n' + titulo + '\n\n' + 'RESPOSTAS:' + '\nA: ' + opcaoA + '\nB: ' + opcaoB + '\nC: ' + opcaoC + '\nD: ' + opcaoD
     return string
 
 def gera_ajuda(dicio_questao):
@@ -126,9 +125,9 @@ def gera_ajuda(dicio_questao):
     alternativa1 = opcoes[letra_aleatoria]
     alternativa2 = opcoes[letra_aleatoria2]
     if num_aleatorio == 1:
-        return f"DICA:\nOpções certamente erradas: {alternativa1}"
+        return f"\033[32mDICA:\nOpções certamente erradas: {alternativa1}\033[m"
     else:
-        return f"DICA:\nOpções certamente erradas: {alternativa1} | {alternativa2}"
+        return f"\033[32mDICA:\nOpções certamente erradas: {alternativa1} | {alternativa2}\033[m"
 
 
 def funcao_geral(lista_questoes):
@@ -171,8 +170,9 @@ def funcao_geral(lista_questoes):
                 if resposta == questao["correta"]:
                     premio = lista_premio[lista_index]
                     lista_index += 1
+                    id += 1
                     if lista_index == 9:
-                        print("Parabéns! você ganhou o prêmio máximo de 1.000.000 R$")
+                        print("\033[32mParabéns! você ganhou o prêmio máximo de 1.000.000 R$\033[m")
                     else:
                         print(f'Você acertou! Seu prêmio atual é de R${premio}\n')
                     break
